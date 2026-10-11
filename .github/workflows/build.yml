@@ -1,4 +1,4 @@
-name: Build Bazzite DX
+name: Build Kitsune DX
 on:
   repository_dispatch:
     types:
@@ -32,10 +32,10 @@ jobs:
       fail-fast: false
       matrix:
         base_image:
-          - bazzite-deck
-          - bazzite-deck-gnome
-          - bazzite-deck-nvidia-gnome
-          - bazzite-deck-nvidia
+          # - bazzite-deck
+          # - bazzite-deck-gnome
+          # - bazzite-deck-nvidia-gnome
+          - bazzite-nvidia-open
 
     env:
       BASE_IMAGE: ${{ matrix.base_image }}
@@ -111,7 +111,9 @@ jobs:
       - name: Generate output image ref
         id: gen_image_ref
         run: |
-          echo "IMAGE_NAME=${BASE_IMAGE/bazzite/bazzite-dx}" | sed 's/-deck//' | tee -a "$GITHUB_ENV"
+          # Generate the IMAGE_NAME environment variable based on the BASE_IMAGE
+          # This line substitutes "bazzite" with "kitsune-dx" in the BASE_IMAGE
+          echo "IMAGE_NAME=${BASE_IMAGE/bazzite/kitsune-dx}" | tee -a "$GITHUB_ENV"
 
       # Generate a file with all the build-args passed to buildah
       - name: Prepare build args file

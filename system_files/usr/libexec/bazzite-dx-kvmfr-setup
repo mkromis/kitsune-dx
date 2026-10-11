@@ -3,7 +3,7 @@ source /usr/lib/ujust/ujust.sh
 # Get the image name based on the filename
 IMAGE_NAME=$(basename "$0" | sed -E 's/(-dx|)-kvmfr-setup//')
 if [ "$IMAGE_NAME" == "bazzite" ]; then
-    IMAGE_NAME="bazzite-dx"
+    IMAGE_NAME="kitsune-dx"
 fi
 
 # Required disclaimer and where to report issues first
