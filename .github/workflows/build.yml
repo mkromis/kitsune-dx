@@ -1,4 +1,4 @@
-name: Build Bazzite DX
+name: Build Kitsune DX
 on:
   repository_dispatch:
     types:
@@ -217,7 +217,7 @@ jobs:
         id: lowercase
         env:
           IMAGE_REGISTRY: ${{ env.IMAGE_REGISTRY }}
-          IMAGE_NAME: ${{ env.IMAGE_NAME }}
+          IMAGE_NAME: ${{ env.v }}
         run: |
           set -x
           echo "registry=${IMAGE_REGISTRY,,}" >> $GITHUB_OUTPUT
