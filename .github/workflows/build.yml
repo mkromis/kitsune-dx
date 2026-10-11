@@ -111,7 +111,9 @@ jobs:
       - name: Generate output image ref
         id: gen_image_ref
         run: |
-          echo "IMAGE_NAME=${BASE_IMAGE/mkromis/kitsune-dx}" | sed 's/-deck//' | tee -a "$GITHUB_ENV"
+          # Generate the IMAGE_NAME environment variable based on the BASE_IMAGE
+          # This line substitutes "bazzite" with "kitsune-dx" in the BASE_IMAGE
+          echo "IMAGE_NAME=${BASE_IMAGE/bazzite/kitsune-dx}" | tee -a "$GITHUB_ENV"
 
       # Generate a file with all the build-args passed to buildah
       - name: Prepare build args file
@@ -217,7 +219,7 @@ jobs:
         id: lowercase
         env:
           IMAGE_REGISTRY: ${{ env.IMAGE_REGISTRY }}
-          IMAGE_NAME: ${{ env.v }}
+          IMAGE_NAME: ${{ env.IMAGE_NAME }}
         run: |
           set -x
           echo "registry=${IMAGE_REGISTRY,,}" >> $GITHUB_OUTPUT
