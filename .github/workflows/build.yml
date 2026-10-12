@@ -1,10 +1,15 @@
 name: Build Kitsune DX
 on:
-  repository_dispatch:
-    types:
-      - build
-  merge_group:
   pull_request:
+    branches:
+      - main
+  schedule:
+    - cron: "05 10 * * 2" # 10:05am UTC every Tuesday
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "**/README.md"
   workflow_dispatch:
 
 env:
