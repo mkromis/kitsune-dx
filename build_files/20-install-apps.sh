@@ -1,8 +1,8 @@
 #!/usr/bin/bash
 set -xeuo pipefail
 
-dnf5 install -y \
     #android-tools \
+dnf5 install -y \
     bcc \
     bpftop \
     bpftrace \
