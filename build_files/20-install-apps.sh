@@ -1,8 +1,8 @@
 #!/usr/bin/bash
 set -xeuo pipefail
 
+    #android-tools \
 dnf5 install -y \
-    android-tools \
     bcc \
     bpftop \
     bpftrace \
@@ -66,9 +66,16 @@ if [[ "$IMAGE_NAME" == *gnome* ]]; then
     systemctl enable gdm.service
 else
     dnf5 install -y \
+        kde-partitionmanager \
+        plasma-discover-flatpak \
+        plasma-discover-kns \
+        plasma-discover-libs \
+        plasma-discover \
+        kcharselect \
         plasma-login-manager
 
     dnf5 remove -y \
+        gnome-disk-utility \
         sddm
 
     systemctl enable plasmalogin
